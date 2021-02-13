@@ -16,11 +16,17 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public Brand GetCarsByBrandId(int brandId)
+        public List<Brand> GetAll()
         {
-            return _brandDal.Get(b => b.BrandId == brandId);
+            return _brandDal.GetAll();
         }
 
-   
+      
+
+       public Brand GetById(int brandId)
+        {
+            return _brandDal.Get(x => x.BrandId == brandId);
+        }
     }
 }
+

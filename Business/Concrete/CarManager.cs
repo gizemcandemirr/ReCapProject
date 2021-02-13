@@ -2,6 +2,7 @@
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +52,9 @@ namespace Business.Concrete
 
         }
 
-
+        public List<CarDetailDTO> GetCarDetails()
+        {
+            return _carDal.GetCarDeatils();
+        }
     }
 }
