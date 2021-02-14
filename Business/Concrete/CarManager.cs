@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Result;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -29,32 +31,32 @@ namespace Business.Concrete
             _carDal.Delete(car);
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _carDal.GetAll();     
+            return new SuccessDataResult<List<Car>>(  _carDal.GetAll(), Messages.CarsListed);     
         }
 
-        public List<Car> GetAllByBrandId(int id)
+        public IDataResult<List<Car>> GetAllByBrandId(int id)
         {
-            return _carDal.GetAll(c => c.BrandId == id);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == id));
         }
 
-        public List<Car> GetAllByColorId(int id)
+        public IDataResult<List<Car>> GetAllByColorId(int id)
         {
-            return _carDal.GetAll(c => c.ColorId == id);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id));
         }
 
-        public List<Car> GetByUnitPrice(int filter)
+        public IDataResult<List<Car>> GetByUnitPrice(int filter)
 
         {
-            return _carDal.GetAll(c => c.DailyPrice == filter);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.DailyPrice == filter));
 
 
         }
 
-        public List<CarDetailDTO> GetCarDetails()
+        public IDataResult<List<CarDetailDTO>> GetCarDetails()
         {
-            return _carDal.GetCarDeatils();
+            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDeatils());
         }
     }
 }
