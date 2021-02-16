@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿using Core.Utilities.Result;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -59,6 +60,11 @@ namespace DataAccess.Concrete.InMemory
         }
 
         public List<CarDetailDTO> GetCarDeatils()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<CarDetailDTO>> GetCarDetails()
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
 ﻿using Core.DataAccess;
+using Core.Utilities.Result;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -9,8 +10,6 @@ namespace DataAccess.Abstract
 {
    public interface ICarDal: IEntityRepository<Car>
     {
-
-        List<CarDetailDTO> GetCarDeatils();
 
 
     }

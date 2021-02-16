@@ -33,7 +33,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            return new SuccessDataResult<List<Car>>(  _carDal.GetAll(), Messages.CarsListed);     
+            if(DateTime.Now.Hour== 11)
+            {
+            return new SuccessDataResult<List<Car>>(Messages.MaintenanceTime);     
+
+            }
+            return new ErrorDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
         }
 
         public IDataResult<List<Car>> GetAllByBrandId(int id)
@@ -56,7 +61,7 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDTO>> GetCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDeatils());
+            throw new NotImplementedException();
         }
     }
 }
