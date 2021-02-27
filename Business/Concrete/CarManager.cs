@@ -1,10 +1,12 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +23,7 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
-        public void Add(Car car)
-        {
-            _carDal.Add(car);
-        }
-
+      
         public void Delete(Car car)
         {
             _carDal.Delete(car);
@@ -62,6 +60,21 @@ namespace Business.Concrete
         public IDataResult<List<CarDetailDTO>> GetCarDetails()
         {
             throw new NotImplementedException();
+        }
+
+         public  IResult Add(Car car)
+        {
+
+            var context = new ValidationContext<Car>(car);
+            CarValidator carValidator = new CarValidator();
+            var result = carValidator.Validate(context);
+            if (!result.IsValid)
+            {
+                throw new ValidationException(result.Errors);
+            }
+
+            _carDal.Add(car);
+            return new SuccessResult(Messages.CarAdded);
         }
     }
 }

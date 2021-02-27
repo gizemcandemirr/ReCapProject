@@ -6,6 +6,8 @@ namespace Business.Constants
 {
    public class Messages
     {
+        public static string CarAdded = "Araba Eklendi";
+
         public static string CarsListed = "Arabalar Listelendi";
         internal static string MaintenanceTime = "program bakımda";
 
