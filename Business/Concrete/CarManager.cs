@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.CCS;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -20,7 +21,6 @@ namespace Business.Concrete
    public class CarManager : ICarService
     {
         ICarDal _carDal;
-
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
@@ -63,11 +63,9 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
-
         [ValidationAspect(typeof(CarValidator))]
          public  IResult Add(Car car)
         {
-
 
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
