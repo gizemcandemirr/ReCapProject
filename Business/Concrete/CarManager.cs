@@ -70,5 +70,21 @@ namespace Business.Concrete
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
         }
+
+
+
+
+        public IDataResult<Car> Get(int id)
+        {
+            Car car = _carDal.Get(p => p.CarId == id);
+            if (car == null)
+            {
+                return new ErrorDataResult<Car>(Messages.GetErrorCarMessage);
+            }
+            else
+            {
+                return new SuccessDataResult<Car>(car, Messages.GetSuccessCarMessage);
+            }
+        }
     }
 }

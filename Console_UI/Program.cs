@@ -33,31 +33,31 @@ namespace ConsoleUI
 
         }
 
-        private static void CategoryTest()
-        {
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetAll())
-            {
-                Console.WriteLine(brand.BrandName);
+        //private static void CategoryTest()
+        //{
+        //    BrandManager brandManager = new BrandManager(new EfBrandDal());
+        //    foreach (var brand in brandManager.GetAll())
+        //    {
+        //        Console.WriteLine(brand.BrandName);
 
-            }
-        }
+        //    }
+        //}
 
-        private static void CarService()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());
-            var result = carManager.GetCarDetails();
-            if (result.Success == true)
-            {
-                foreach (var car in result.Data)
-                {
-                    Console.WriteLine(car.Description + "/" + car.ColorName);
-                }
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
+        //private static void CarService()
+        //{
+        //    CarManager carManager = new CarManager(new EfCarDal());
+        //    var result = carManager.GetCarDetails();
+        //    if (result.Success == true)
+        //    {
+        //        foreach (var car in result.Data)
+        //        {
+        //            Console.WriteLine(car.Description + "/" + car.ColorName);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine(result.Message);
+        //    }
 
 
             //Console.WriteLine("\nAraç\tMarka\t Renk\tÜcret\t");

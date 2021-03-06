@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -35,17 +36,16 @@ namespace WebAPI.Controllers
         }
 
 
-
         [HttpPost("add")]
-        public IActionResult Add(CarImages carImage)
+        [DisableRequestSizeLimit]
+        public IActionResult Add([FromForm] CarImagesOperationDto carImagesOperationDto)
         {
-            var result = _carImagesService.Add(carImage);
+            var result = _carImagesService.Add(carImagesOperationDto);
             if (result.Success)
-            {
                 return Ok(result);
-            }
             return BadRequest(result);
         }
+
 
 
 
