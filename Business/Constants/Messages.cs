@@ -33,6 +33,15 @@ namespace Business.Constants
         public static string CarImageNotFound = "Değiştirilmek istenen resim bulunamadı.";
 
 
+        public static string AuthorizationDenied = "Yetkiniz Yok";
+        public static string UserRegistered = "Kayıt Oluşturuldu";
+        public static string UserNotFound = "Kullanıcı Bulunamadı";
+        public static string PasswordError = "Şifre yanlış/hatalı";
+        public static string SuccessfulLogin = "Başarılı Giriş";
+        public static string UserAlreadyExists = "Bu kullanıcı zaten mevcut";
+        public static string AccessTokenCreated = "şifreleme oluşturuldu";
+
+
 
     }
 }
